@@ -1,0 +1,33 @@
+const { Server } = require('socket.io');
+
+let io;
+
+const initSocket = (server) => {
+  io = new Server(server, {
+    cors: {
+      origin: 'http://localhost:5173',
+      methods: ['GET', 'POST']
+    }
+  });
+
+  io.on('connection', (socket) => {
+    console.log(`User connected: ${socket.id}`);
+
+    socket.on('join_project', (projectId) => {
+      socket.join(projectId);
+      console.log(`Socket ${socket.id} joined project: ${projectId}`);
+    });
+
+    socket.on('disconnect', () => {
+      console.log(`User disconnected: ${socket.id}`);
+    });
+  });
+};
+
+const getIO = () => {
+  if (!io) throw new Error('Socket.io not initialized');
+  return io;
+};
+
+// ← This line is the most important — check it carefully
+module.exports = { initSocket, getIO };
