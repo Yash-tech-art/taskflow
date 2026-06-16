@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/auth.middleware');
-const { getAllUsers } = require('../models/User.model');
+const { getAllUsers } = require('../models/user.model');
 
 // GET /api/users — get all users (for task assignment dropdown)
 router.get('/', protect, async (req, res) => {

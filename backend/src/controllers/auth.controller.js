@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { findUserByEmail, createUser } = require('../models/User.model');
+const { findUserByEmail, createUser } = require('../models/user.model');
 
 // Generate JWT token with user id and role inside it
 const generateToken = (user) => {
