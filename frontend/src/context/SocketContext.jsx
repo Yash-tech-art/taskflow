@@ -7,11 +7,10 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Connect to our backend socket server
-    const newSocket = io('http://localhost:5000');
+    // Use environment variable instead of localhost
+    const newSocket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
     setSocket(newSocket);
 
-    // Cleanup on unmount
     return () => newSocket.close();
   }, []);
 
