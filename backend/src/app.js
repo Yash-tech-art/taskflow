@@ -8,14 +8,15 @@ const projectRoutes = require('./routes/project.routes');
 
 const app = express();
 
-// ← only this part changes
+// Allow all origins
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'https://taskflow-rosy-beta.vercel.app/' // replace with your actual vercel URL
-  ],
-  credentials: true
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.use(express.json());
 
