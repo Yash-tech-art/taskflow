@@ -8,14 +8,12 @@ const projectRoutes = require('./routes/project.routes');
 
 const app = express();
 
-// Allow all origins
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-// Handle preflight requests
 app.options('*', cors());
 
 app.use(express.json());
