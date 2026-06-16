@@ -8,7 +8,15 @@ const projectRoutes = require('./routes/project.routes');
 
 const app = express();
 
-app.use(cors());
+// ← only this part changes
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://taskflow-xxx.vercel.app' // replace with your actual vercel URL
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
