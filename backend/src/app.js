@@ -14,7 +14,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
-app.options('*', cors());
+// removed app.options line — that was causing the error
 
 app.use(express.json());
 
