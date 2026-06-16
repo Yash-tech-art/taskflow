@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://taskflow-xxx.vercel.app' // replace with your actual vercel URL
+    'https://taskflow-rosy-beta.vercel.app/' // replace with your actual vercel URL
   ],
   credentials: true
 }));
